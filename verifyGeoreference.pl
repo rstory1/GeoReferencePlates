@@ -161,7 +161,7 @@ my $cifpDbh = DBI->connect( "dbi:SQLite:dbname=./cifp-$cycle.db",
 
 #The 56 day NASR database
 our $nasrDbh =
-     DBI->connect( "dbi:SQLite:dbname=./56day.db", "", "", { RaiseError => 1 } )
+  DBI->connect( "dbi:SQLite:dbname=./nasr.sqlite", "", "", { RaiseError => 1 } )
   or croak $DBI::errstr;
 
 #-----------------------------------------------
@@ -3155,7 +3155,7 @@ sub handlerAutoGeoreferenceButtonClick {
 
     #run georef
     my $autoGeoCommand =
-      "./georeferencePlatesViaDb.pl -s -t $main::PDF_NAME $main::cycle";
+      "./georeference_plates_via_db.pl -s -t $main::PDF_NAME $main::cycle";
 
     say $autoGeoCommand;
 
@@ -3167,7 +3167,7 @@ sub handlerAutoGeoreferenceButtonClick {
 
     if ( $retval != 0 ) {
         carp
-          "Error executing georeferencePlatesViaDb.pl Return code was $retval";
+          "Error executing georeference_plates_via_db.pl Return code was $retval";
 
         #           $statistics{'$status'} = "AUTOBAD";
         #         return;

@@ -173,7 +173,7 @@ our $shouldSaveBadRatio         = $opt{b};
 our $shouldUseMultipleObstacles = $opt{m};
 
 #The name of our dtpp database
-my $dbfile = "./dtpp-$cycle.db";
+my $dbfile = "./dtpp-$cycle.sqlite";
 
 #Connect to dtpp database
 my $dtppDbh =
@@ -186,7 +186,7 @@ our $dbh;
 my $sth;
 
 $dbh =
-     DBI->connect( "dbi:SQLite:dbname=./56day.db", "", "", { RaiseError => 1 } )
+  DBI->connect( "dbi:SQLite:dbname=./nasr.sqlite", "", "", { RaiseError => 1 } )
   or croak $DBI::errstr;
 
 our (
